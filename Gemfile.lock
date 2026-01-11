@@ -260,7 +260,6 @@ GEM
       omniauth (~> 2.0)
     open3 (0.2.1)
     openssl (3.3.2)
-    pg (1.6.2)
     pp (0.6.3)
       prettyprint
     premailer (1.27.0)
@@ -385,6 +384,8 @@ GEM
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
+    sqlite3 (2.9.0)
+      mini_portile2 (~> 2.8.0)
     stringio (3.1.8)
     temple (0.10.4)
     thor (1.4.0)
@@ -424,7 +425,6 @@ DEPENDENCIES
   aws_lambda_ric
   bootsnap
   commonmarker
-  connection_pool
   factory_bot_rails
   faker
   faraday
@@ -443,7 +443,6 @@ DEPENDENCIES
   omniauth-github
   open3
   openssl
-  pg (>= 0.18, < 2.0)
   premailer-rails
   puma
   rack-contrib
@@ -456,6 +455,7 @@ DEPENDENCIES
   sentry-rails
   sentry-ruby
   shoryuken
+  sqlite3
   vite_rails
 
 BUNDLED WITH

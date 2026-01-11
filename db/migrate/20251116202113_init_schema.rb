@@ -1,7 +1,5 @@
-class InitSchema < ActiveRecord::Migration
+class InitSchema < ActiveRecord::Migration[8.1]
   def up
-    # These are extensions that must be enabled in order to support this database
-    enable_extension "pg_catalog.plpgsql"
     create_table "announcements" do |t|
       t.text "body", null: false
       t.bigint "conference_id", null: false
@@ -26,7 +24,7 @@ class InitSchema < ActiveRecord::Migration
       t.bigint "broadcast_id", null: false
       t.datetime "created_at", precision: nil, null: false
       t.datetime "dispatched_at", precision: nil
-      t.jsonb "meta"
+      t.json "meta"
       t.datetime "opened_at", precision: nil
       t.string "recipient", null: false
       t.string "recipient_cc"
@@ -98,9 +96,9 @@ class InitSchema < ActiveRecord::Migration
     create_table "exhibition_editing_histories" do |t|
       t.string "comment"
       t.datetime "created_at", precision: nil, null: false
-      t.jsonb "diff"
+      t.json "diff"
       t.bigint "exhibition_id"
-      t.jsonb "raw"
+      t.json "raw"
       t.bigint "staff_id"
       t.datetime "updated_at", precision: nil, null: false
       t.index ["exhibition_id", "id"], name: "index_exhibition_editing_histories_on_exhibition_id_and_id"
@@ -119,7 +117,7 @@ class InitSchema < ActiveRecord::Migration
       t.text "booth_help_html"
       t.bigint "conference_id", null: false
       t.datetime "created_at", precision: nil, null: false
-      t.jsonb "fallback_options", default: {}, null: false
+      t.json "fallback_options", default: {}, null: false
       t.text "head"
       t.text "head_html"
       t.string "locale", null: false
@@ -188,8 +186,8 @@ class InitSchema < ActiveRecord::Migration
     create_table "sponsorship_editing_histories" do |t|
       t.string "comment"
       t.datetime "created_at", precision: nil, null: false
-      t.jsonb "diff", null: false
-      t.jsonb "raw", null: false
+      t.json "diff", null: false
+      t.json "raw", null: false
       t.bigint "sponsorship_id", null: false
       t.bigint "staff_id"
       t.datetime "updated_at", precision: nil, null: false
