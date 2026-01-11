@@ -16,7 +16,7 @@ RUN APP_ENV=production NODE_ENV=production VITE_BUILD=1 pnpm run build
 
 ###
 
-FROM public.ecr.aws/sorah/ruby:3.4-dev as builder
+FROM public.ecr.aws/sorah/ruby:4.0-dev as builder
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
@@ -37,7 +37,7 @@ RUN bundle binstubs bundler aws_lambda_ric --force --path /usr/local/bin
 
 ###
 
-FROM public.ecr.aws/sorah/ruby:3.4
+FROM public.ecr.aws/sorah/ruby:4.0
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
