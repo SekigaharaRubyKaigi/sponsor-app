@@ -26,7 +26,7 @@ class Admin::SponsorshipsController < Admin::ApplicationController
     @sponsorship.staff = current_staff
     respond_to do |format|
       if @sponsorship.save
-        ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
+        # ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
         format.html { redirect_to conference_sponsorship_path(@conference, @sponsorship), notice: 'Sponsorship was successfully updated.' }
       else
         format.html { render :edit }
@@ -40,7 +40,7 @@ class Admin::SponsorshipsController < Admin::ApplicationController
     respond_to do |format|
       @sponsorship.withdraw
       @sponsorship.save!
-      ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
+      # ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
       format.html { redirect_to conference_sponsorship_path(@conference, @sponsorship), notice: 'Sponsorship was successfully withdrawn.' }
     end
   end

@@ -16,7 +16,7 @@ RUN APP_ENV=production NODE_ENV=production VITE_BUILD=1 pnpm run build
 
 ###
 
-FROM public.ecr.aws/sorah/ruby:3.4-dev as builder
+FROM public.ecr.aws/sorah/ruby:4.0-dev as builder
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
@@ -30,19 +30,24 @@ COPY Gemfile.lock /app/
 RUN bundle config set deployment true \
  && bundle config set without development:test \
  && bundle config set path /gems \
+ && bundle config set bin /usr/local/bin \
  && true
 ENV BUNDLE_JOBS=100
 RUN bundle install
-RUN bundle binstubs bundler aws_lambda_ric --force --path /usr/local/bin
+RUN bundle binstubs bundler aws_lambda_ric --force
 
 ###
 
-FROM public.ecr.aws/sorah/ruby:3.4
+FROM public.ecr.aws/sorah/ruby:4.0
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
- && apt-get install --no-install-recommends -y libpq5 libyaml-dev \
+ && apt-get install --no-install-recommends -y curl libpq5 libyaml-dev \
  && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL -o '/tmp/litestream.deb' 'https://github.com/benbjohnson/litestream/releases/download/v0.5.6/litestream-0.5.6-linux-x86_64.deb' \
+ && dpkg -i /tmp/litestream.deb \
+ && rm /tmp/litestream.deb
 
 WORKDIR /app
 RUN ln -s /tmp/apptmp /app/tmp

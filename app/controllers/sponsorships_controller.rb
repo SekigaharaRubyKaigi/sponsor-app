@@ -91,7 +91,7 @@ class SponsorshipsController < ApplicationController
 
     respond_to do |format|
       if @sponsorship.save(context: :update_by_user)
-        ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
+        # ProcessSponsorshipEditJob.perform_later(@sponsorship.last_editing_history)
         format.html { redirect_to user_conference_sponsorship_path(conference: @conference), notice: 'Your application was successfully updated.' }
       else
         format.html { render :edit }

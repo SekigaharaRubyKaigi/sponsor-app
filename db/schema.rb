@@ -11,9 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
   create_table "announcements", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "conference_id", null: false
@@ -39,7 +36,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
     t.bigint "broadcast_id", null: false
     t.datetime "created_at", null: false
     t.datetime "dispatched_at"
-    t.jsonb "meta"
+    t.json "meta"
     t.datetime "opened_at"
     t.string "recipient", null: false
     t.string "recipient_cc"
@@ -115,9 +112,9 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
   create_table "exhibition_editing_histories", force: :cascade do |t|
     t.string "comment"
     t.datetime "created_at", null: false
-    t.jsonb "diff"
+    t.json "diff"
     t.bigint "exhibition_id"
-    t.jsonb "raw"
+    t.json "raw"
     t.bigint "staff_id"
     t.datetime "updated_at", null: false
     t.index ["exhibition_id", "id"], name: "index_exhibition_editing_histories_on_exhibition_id_and_id"
@@ -138,7 +135,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
     t.text "booth_help_html"
     t.bigint "conference_id", null: false
     t.datetime "created_at", null: false
-    t.jsonb "fallback_options", default: {}, null: false
+    t.json "fallback_options", default: {}, null: false
     t.text "head"
     t.text "head_html"
     t.string "locale", null: false
@@ -212,8 +209,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
   create_table "sponsorship_editing_histories", force: :cascade do |t|
     t.string "comment"
     t.datetime "created_at", null: false
-    t.jsonb "diff", null: false
-    t.jsonb "raw", null: false
+    t.json "diff", null: false
+    t.json "raw", null: false
     t.bigint "sponsorship_id", null: false
     t.bigint "staff_id"
     t.datetime "updated_at", null: false
