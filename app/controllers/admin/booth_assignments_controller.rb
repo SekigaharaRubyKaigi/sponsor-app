@@ -22,7 +22,7 @@ class Admin::BoothAssignmentsController < ::Admin::ApplicationController
       if sponsorship.booth_assigned_changed?
         sponsorship.staff = current_staff
         sponsorship.save!(validate: false)
-        ProcessSponsorshipEditJob.perform_later(sponsorship.last_editing_history)
+        # ProcessSponsorshipEditJob.perform_later(sponsorship.last_editing_history)
       end
     end
     redirect_to conference_booth_assignment_path(@conference), notice: 'Assignment updated'
