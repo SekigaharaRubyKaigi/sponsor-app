@@ -30,10 +30,11 @@ COPY Gemfile.lock /app/
 RUN bundle config set deployment true \
  && bundle config set without development:test \
  && bundle config set path /gems \
+ && bundle config set bin /usr/local/bin \
  && true
 ENV BUNDLE_JOBS=100
 RUN bundle install
-RUN bundle binstubs bundler aws_lambda_ric --force --path /usr/local/bin
+RUN bundle binstubs bundler aws_lambda_ric --force
 
 ###
 
