@@ -42,8 +42,12 @@ FROM public.ecr.aws/sorah/ruby:4.0
 
 RUN --mount=type=cache,target=/var/cache/apt,sharing=locked --mount=type=cache,target=/var/lib/apt,sharing=locked \
     apt-get update \
- && apt-get install --no-install-recommends -y libpq5 libyaml-dev \
+ && apt-get install --no-install-recommends -y curl libpq5 libyaml-dev \
  && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL -o '/tmp/litestream.deb' 'https://github.com/benbjohnson/litestream/releases/download/v0.5.6/litestream-0.5.6-linux-x86_64.deb' \
+ && dpkg -i /tmp/litestream.deb \
+ && rm /tmp/litestream.deb
 
 WORKDIR /app
 RUN ln -s /tmp/apptmp /app/tmp
