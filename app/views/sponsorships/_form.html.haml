@@ -183,19 +183,6 @@
       = form.text_area :profile, class: 'form-control', required: true
       %small.sponsorships_form_profile_help.form-text
 
-
-    %div.py-3.sponsorships_form_info__warning.d-none{data: {warning_kind: 'english'}}
-      .card
-        %h5.card-header= t('.warnings.english.header')
-        .card-body
-          %p.card-text= t('.warnings.english.body1')
-          %p.card-text= t('.warnings.english.body2')
-          .form-group.mb-0
-            .form-check
-              %input.form-check-input#sponsorships_form_english_ack{type: 'checkbox'}
-              %label.form-check-label{for: 'sponsorships_form_english_ack'}
-                = t('.warnings.english.acknowledge')
-
   %section.py-2.sponsorships_form_job_board
     .form-group
       %h3= t('.job_board')
