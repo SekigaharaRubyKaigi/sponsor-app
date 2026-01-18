@@ -114,7 +114,6 @@
               = plan.name
               %small<
                 #{plan.price_text}
-                , #{t('.plan_explanation.guests', count: plan.number_of_guests)}
                 - if plan.booth_eligible?
                   , #{t('.plan_explanation.booth', count: plan.booth_size)}
                 - if plan.talkable?
