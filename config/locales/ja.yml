@@ -6,6 +6,8 @@ ja:
         name: '会社名/組織名 (英語)'
         url: 'URL'
         profile: '紹介文 (英語)'
+        job_board_text: 'ジョブボード掲載文'
+        job_board_url: 'ジョブボードURL'
         booth_requested: 'ブース出展'
         fallback_option: '優先順位'
         number_of_additional_attendees: '追加Attendeeチケット枚数'
@@ -149,6 +151,9 @@ ja:
       information: 'サイト掲載情報'
       information_help: |
         ウェブサイトや会場に掲載するためのスポンサーの情報をご提供ください。こちらの情報は全て英語での提出をお願いしております。情報に含まれる社名・サービス名についても、英語表記をご利用ください。また、仮の内容を提出される場合はその旨を下記 [その他の連絡事項] 欄にご記入ください。修正され、連絡事項で仮ではなくなった事が分かるまで Web サイトへの掲載を保留いたします。
+      job_board: 'ジョブボード'
+      job_board_help_html: 'ジョブボードに掲載するテキストとURLをご記入ください（掲載イメージ: %{link}）。ジョブボードは100文字まで入力できます。'
+      job_board_uneligible: 'ジョブボードは %{plans} プランのみが対象です。'
       logo: 'ロゴ'
       download_logo: '(以前にアップロードしたファイルをダウンロードする)'
       logo_help: |
@@ -185,6 +190,11 @@ ja:
       title: スポンサーポータル
       header: "%{name} スポンサーポータル"
       your_application: "申込情報"
+      company_url: "会社URL"
+      company_profile: "会社概要"
+      job_board: "ジョブボード"
+      job_board_url: "ジョブボードURL"
+      job_board_text: "ジョブボード掲載文"
       edit: "修正"
       amendment_availability: "%{ts} まで修正することができます。"
       contact: "問合せ"

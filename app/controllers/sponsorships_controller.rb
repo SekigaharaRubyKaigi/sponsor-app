@@ -107,6 +107,8 @@ class SponsorshipsController < ApplicationController
       :name,
       :url,
       :profile,
+      :job_board_text,
+      :job_board_url,
       :asset_file_id,
       :asset_file_id_to_copy,
       :booth_requested,

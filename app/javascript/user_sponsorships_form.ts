@@ -78,6 +78,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const uneligibleHelpTextElem = formElem.querySelector(
         ".sponsorships_form_booth_request_uneligible",
       ) as Element;
+      const jobBoardSection = formElem.querySelector<HTMLElement>(
+        ".sponsorships_form_job_board",
+      );
+      const jobBoardUneligibleElem = formElem.querySelector<HTMLElement>(
+        ".sponsorships_form_job_board_uneligible",
+      );
+      const jobBoardInputs = jobBoardSection?.querySelectorAll<
+        HTMLInputElement | HTMLTextAreaElement
+      >("input, textarea");
       const customizationRequestField = document.querySelector(
         ".sponsorships_form_customization_request",
       ) as HTMLTextAreaElement;
@@ -96,6 +105,21 @@ document.addEventListener("DOMContentLoaded", () => {
           uneligibleHelpTextElem.classList.remove("d-none");
           boothCheckbox.checked = false;
           boothCheckbox.disabled = true;
+        }
+
+        if (jobBoardSection) {
+          if (e?.dataset.jobBoard == "1") {
+            jobBoardUneligibleElem?.classList.add("d-none");
+            jobBoardInputs?.forEach((input) => {
+              input.disabled = false;
+            });
+          } else {
+            jobBoardUneligibleElem?.classList.remove("d-none");
+            jobBoardInputs?.forEach((input) => {
+              input.value = "";
+              input.disabled = true;
+            });
+          }
         }
 
         const wordsLimitHelp = e?.dataset.wordsLimitHelp;

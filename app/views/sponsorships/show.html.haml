@@ -8,9 +8,19 @@
       .card-header= t('.your_application')
       .card-body
         %h5.card-title= @sponsorship.name
+        %h6.mt-3= t('.company_url')
         %p.card-text
           %a{href: @sponsorship.url}= @sponsorship.url
+        %h6.mt-3= t('.company_profile')
         %p.card-text= @sponsorship.profile
+        - if @sponsorship.job_board_available? && (@sponsorship.job_board_text.present? || @sponsorship.job_board_url.present?)
+          - if @sponsorship.job_board_url.present?
+            %h6.mt-3= t('.job_board_url')
+            %p.card-text
+              %a{href: @sponsorship.job_board_url}= @sponsorship.job_board_url
+          - if @sponsorship.job_board_text.present?
+            %h6.mt-3= t('.job_board_text')
+            %p.card-text= @sponsorship.job_board_text
 
         %p.card-text
           = link_to t('.edit'), edit_user_conference_sponsorship_path(@conference), class: 'btn btn-primary'

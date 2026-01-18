@@ -55,4 +55,10 @@
         = form.label :auto_acceptance, "", class: 'form-check-label'
 
   .form-group
+    .form-check
+      %label.form-check-label
+        = form.check_box :job_board_available, class: 'form-check-input'
+        = form.label :job_board_available, "", class: 'form-check-label'
+
+  .form-group
     = form.submit class: 'btn btn-primary'
