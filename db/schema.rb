@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_18_092000) do
   create_table "announcements", force: :cascade do |t|
     t.text "body", null: false
     t.bigint "conference_id", null: false
@@ -166,6 +166,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
     t.datetime "closes_at"
     t.bigint "conference_id", null: false
     t.datetime "created_at", null: false
+    t.boolean "job_board_available", default: false, null: false
     t.string "name", null: false
     t.integer "number_of_guests", default: 0, null: false
     t.string "price_text"
@@ -250,6 +251,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_202113) do
     t.boolean "customization", default: false, null: false
     t.string "customization_name"
     t.string "fallback_option", default: "", null: false
+    t.text "job_board_text"
+    t.string "job_board_url"
     t.string "locale", null: false
     t.string "name", null: false
     t.integer "number_of_additional_attendees"

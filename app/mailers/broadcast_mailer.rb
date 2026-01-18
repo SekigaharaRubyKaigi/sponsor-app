@@ -32,10 +32,4 @@ class BroadcastMailer < ApplicationMailer
     end
     "<a href=\"#{url}\">#{url}</a>".html_safe
   end
-
-  private
-
-  def subject_prefix
-    "[#{@broadcast.conference.name}] "
-  end
 end

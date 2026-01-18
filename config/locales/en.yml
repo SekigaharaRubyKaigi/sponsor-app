@@ -6,6 +6,8 @@ en:
         name: 'Organization Name'
         url: 'URL'
         profile: 'Introduction text'
+        job_board_text: 'Job Board Text'
+        job_board_url: 'Job Board URL'
         booth_requested: 'Booth Request'
         fallback_option: 'Alternative Plan Preference'
         number_of_additional_attendees: 'Number of Additional Attendees'
@@ -148,6 +150,9 @@ en:
       information: 'Sponsor Information'
       information_help: |
         Please provide a short introduction of your company. Note that the length of the introduction will vary depending on the sponsorship plan you chose. If you submit a preliminary information or prefer to submit later, let us know via [Others] field below. We'll hold the information from publication on our website.
+      job_board: 'Job Board'
+      job_board_help_html: 'Provide the text and URL you want to publish on the job board (Example: %{link}).'
+      job_board_uneligible: 'This option is only available for %{plans} plan(s).'
       logo: 'Logo'
       download_logo: '(Download previously uploaded file)'
       logo_help: |
@@ -183,6 +188,7 @@ en:
       title: Sponsorship Portal
       header: "%{name} Sponsorship Portal"
       your_application: "Your application"
+      job_board: "Job Board"
       edit: "Edit"
       amendment_availability: "You can amend your application until %{ts}."
       contact: "Contact"

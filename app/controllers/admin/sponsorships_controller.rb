@@ -53,6 +53,8 @@ class Admin::SponsorshipsController < Admin::ApplicationController
       :name,
       :url,
       :profile,
+      :job_board_text,
+      :job_board_url,
       :logo_key,
       :booth_requested,
       :fallback_option,

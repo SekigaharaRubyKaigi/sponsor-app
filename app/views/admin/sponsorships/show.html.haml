@@ -172,6 +172,16 @@
                 #{@sponsorship.word_count} words
                 - if @sponsorship.plan&.words_limit
                   #{@sponsorship.plan.words_limit} or #{@sponsorship.plan.words_limit_hard&.to_i}
+        - if @sponsorship.job_board_available? && (@sponsorship.job_board_text.present? || @sponsorship.job_board_url.present?)
+          .card.mt-2
+            %h5.card-header
+              Job Board
+            .card-body
+              - if @sponsorship.job_board_text.present?
+                %p.card-text= @sponsorship.job_board_text
+              - if @sponsorship.job_board_url.present?
+                %p.card-text
+                  %a.card-link{href: @sponsorship.job_board_url, target: '_blank'}= @sponsorship.job_board_url
   .col-md-4
     .card
       .card-header.d-flex.justify-content-between

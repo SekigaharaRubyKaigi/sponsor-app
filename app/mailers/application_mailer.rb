@@ -91,7 +91,7 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def subject_prefix
-    @subject_prefix ||= "[#{Rails.application.config.x.org_name}] "
+    @subject_prefix ||= "[関ケ原Ruby会議01] "
   end
 
   def make_subject(**params)
