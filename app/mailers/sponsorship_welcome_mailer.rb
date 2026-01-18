@@ -40,10 +40,4 @@ class SponsorshipWelcomeMailer < ApplicationMailer
       reply_to: @sponsor_contact_email,
     )
   end
-
-  private
-
-  def subject_prefix
-    "[#{@sponsorship.conference.name}] "
-  end
 end
