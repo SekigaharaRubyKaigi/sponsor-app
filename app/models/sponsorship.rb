@@ -68,6 +68,7 @@ class Sponsorship < ApplicationRecord
   validates :name, presence: true
   validates :url, presence: true
   validates :profile, presence: true
+  validates :job_board_text, length: { maximum: 100 }, allow_blank: true
 
   validates :asset_file, presence: true
 
@@ -90,6 +91,7 @@ class Sponsorship < ApplicationRecord
   accepts_nested_attributes_for :customization_request, reject_if: -> (attrs) { attrs['kind'].present? }
   accepts_nested_attributes_for :note, reject_if: -> (attrs) { attrs['kind'].present? }
 
+  before_validation :clear_job_board_if_unavailable
   before_validation :generate_ticket_key
 
   def build_nested_attributes_associations
@@ -223,7 +225,7 @@ class Sponsorship < ApplicationRecord
       0
     end
   end
-  
+
   def total_number_of_booth_staff
     #(active? && booth_assigned?) ? [3, booth_size ? booth_size*2 : 0].max : 0 # FIXME:
     (active? && booth_assigned?) ? 2 : 0 # FIXME:
@@ -231,6 +233,10 @@ class Sponsorship < ApplicationRecord
 
   def booth_size
     plan&.booth_size
+  end
+
+  def job_board_available?
+    plan&.job_board_available?
   end
 
   def assigned_booth_size
@@ -311,5 +317,12 @@ class Sponsorship < ApplicationRecord
         self.ticket_key = SecureRandom.urlsafe_base64(64)
       end while self.class.where(conference: conference, ticket_key: self.ticket_key).exists?
     end
+  end
+
+  def clear_job_board_if_unavailable
+    return if job_board_available?
+
+    self.job_board_text = nil
+    self.job_board_url = nil
   end
 end
